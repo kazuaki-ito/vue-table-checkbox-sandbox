@@ -13,10 +13,6 @@ const items = ref<Item[]>([
   { id: 3, name: 'Item 3', selected: false }
 ])
 
-const toggleSelection = (index: number) => {
-  items.value[index].checked = !items.value[index].checked
-}
-
 const updateItems = () => {
   items.value = [
     { id: 4, name: 'Item 4', selected: false },
@@ -31,6 +27,7 @@ const initScreen = () => {
 
 <template>
   <main>
+    {{ items }}
     <a href="#" @click="updateItems">更新</a>
     <a href="#" @click="initScreen">初期化</a>
     <table class="table">
@@ -42,16 +39,11 @@ const initScreen = () => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in items" :key="item.id">
+        <tr v-for="item in items" :key="item.id">
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>
-            <input
-              type="checkbox"
-              id="item.id"
-              v-model="item.selected"
-              @change="toggleSelection(index)"
-            />
+            <input type="checkbox" id="item.id" v-model="item.selected" />
           </td>
         </tr>
       </tbody>
