@@ -27,7 +27,6 @@ const initScreen = () => {
 
 <template>
   <main>
-    {{ items }}
     <a href="#" @click="updateItems">更新</a>
     <a href="#" @click="initScreen">初期化</a>
     <table class="table">
